@@ -8,7 +8,7 @@ const connect = async (): Promise<void> => {
 
   try {
     await mongoose.connect(
-      `mongodb://${USER}:${PASSWORD}@${HOST}:${PORT}/promotions?authSource=admin`,
+      `mongodb+srv://productListUser:${PASSWORD}@cluster0.6iz6c.mongodb.net/promotions?retryWrites=true&w=majority`,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,

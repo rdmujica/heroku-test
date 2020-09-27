@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import createApp from './app';
-// import connect from './database';
+import connect from './database';
 
 const PORT = process.env.PORT || 3001;
 
@@ -11,5 +11,5 @@ const main = async () => {
   console.log(`Server listening in port ${PORT}`);
 };
 
-// connect();
+connect();
 main();
