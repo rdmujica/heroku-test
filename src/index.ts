@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import createApp from './app';
 // import connect from './database';
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 const main = async () => {
   const app = await createApp();
