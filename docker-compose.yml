@@ -1,0 +1,34 @@
+version: '3.5'
+services:
+  backend-app:
+    build: .
+    image: back-shop:latest
+    container_name: back-shop-local
+    ports:
+      - '80:3001'
+    #    depends_on:
+    #      - mongodb
+    links:
+      - mongodb
+    environment:
+      - PRODUCT_LIST_USER=productListUser
+      - PRODUCT_LIST_PASSWORD=productListPassword
+      - PRODUCT_LIST_HOST=mongodb
+      - PRODUCT_LIST_PORT=27017
+    networks:
+      - backend
+  mongodb:
+    image: mongo:3.6.8
+    container_name: mongodb-local
+    ports:
+      - '27017:27017'
+    volumes:
+      - /home/rdmujica/Documents/github/products-db-master/database:/database
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=productListUser
+      - MONGO_INITDB_ROOT_PASSWORD=productListPassword
+    networks:
+      - backend
+networks:
+  backend:
+    driver: 'bridge'
